@@ -1,0 +1,3 @@
+rootProject.name = 'GymClassFinder'
+
+include ':app'
