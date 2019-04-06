@@ -7,51 +7,59 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, FlatList} from 'react-native';
+import { Spinner } from '../components/Spinner';
+import { ClassList } from '../components/ClassList';
+import { ClassPicker } from '../components/ClassPicker';
 import { GetClasses } from '../apis/gym';
-import { massageClassData, filterByDay, filterEarlier, getCurrentDay } from '../lib/helpers';
+import { mapClassData, filterByDay, getCurrentDay } from '../lib/helpers';
 
 
 type Props = {};
 class MainView extends Component<Props> {
     state = {
+        location: 'ballsbridge',
         classes: [],
+        isLoading: true
     };
+
     constructor(props) {
         super(props);
-        this.classSearch('ballsbridge')
-      }
+        this.classSearch(this.state.location)
+    }
 
     classSearch(location) { 
         GetClasses(location)
-            .then(massageClassData)
+            .then(mapClassData)
             .then(classes => filterByDay(classes, getCurrentDay()))
-            .then(filterEarlier)
-            .then(classes => this.setState({ classes }));
+            .then(classes => this.setState({ classes, isLoading: false }));
+    }
+
+    locationChanged(location) {
+        this.setState({ location: location, isLoading: true});
+        this.classSearch(location)
     }
 
     render() {
-        const { classes } = this.state;
+        const { classes, isLoading } = this.state;
+
+        if (!isLoading) {
+            classList = <ClassList classes={classes}/>
+        } else {
+            classList = <Spinner />
+        }
 
         return (
-            <FlatList style={styles.container}
-                data={classes}
-                renderItem={({item}) => <Text style={styles.gymClass}>{item.name}: {item.time}</Text>}
-            />
+            <React.Fragment>
+                <ClassPicker
+                    location={this.state.location}
+                    height={100}
+                    width={300}
+                    classChange={(itemValue) => this.locationChanged(itemValue)}
+                />
+                {classList}
+            </React.Fragment>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        paddingTop: 100,
-        backgroundColor: '#F5FCFF',
-    },
-    gymClass: {
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 5,
-    },
-});
 
 export default MainView;

@@ -1,19 +1,19 @@
-const massageClassData = classData =>
-  classData
+const mapClassData = classData => {
+  return classData
     .map(({ name, start: time, day, start_unix }) => ({
       name,
       time,
       day,
       start_unix
     }))
-
+};
 
 const filterByDay = (gymClasses, day) => {
     return gymClasses
       .filter(gymClass => day === gymClass.day);
 };
 
-const filterEarlier = (gymClasses) => {
+const filterEarlier = gymClasses => {
   return gymClasses
     .filter(gymClass => new Date().getTime() > gymClass.start_unix);
 };
@@ -23,4 +23,12 @@ const getCurrentDay = () => {
   return days[new Date().getDay() - 1];
 };
 
-export { massageClassData, filterByDay, filterEarlier, getCurrentDay };
+const getLocations = () => {
+  return [
+    { label: "Ballsbridge", value: 'ballsbridge' },
+    { label: "Rathfarnam",  value: 'rathfarnham' },
+    { label: "Clarendon",   value: 'clarendon-street' },
+  ]
+}
+
+export { mapClassData, filterByDay, filterEarlier, getCurrentDay, getLocations };
