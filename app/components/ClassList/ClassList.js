@@ -1,17 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from 'react';
-import {
-    StyleSheet,
-    Text,
-    FlatList,
-} from 'react-native';
+import { Text, FlatList } from 'react-native';
+import { styles } from './styles';
 
 export class ClassList extends Component<Props> {
 
@@ -28,14 +17,3 @@ export class ClassList extends Component<Props> {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        marginTop: 150,
-    },
-    gymClass: {
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 5,
-    },
-});

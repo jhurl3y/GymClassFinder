@@ -52,8 +52,6 @@ class MainView extends Component<Props> {
             <React.Fragment>
                 <ClassPicker
                     location={this.state.location}
-                    height={100}
-                    width={300}
                     classChange={(itemValue) => this.locationChanged(itemValue)}
                 />
                 {classList}
