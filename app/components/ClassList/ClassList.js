@@ -24,6 +24,7 @@ export class ClassList extends Component<Props> {
             <FlatList style={styles.container}
                 data={this.props.classes}
                 renderItem={({item, index}) => this.renderListItem(item, index)}
+                keyExtractor={(item, index) => index.toString()}
             />
         )
     }
