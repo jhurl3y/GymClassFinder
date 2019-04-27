@@ -1,7 +1,8 @@
 const mapClassData = classData => {
   return classData
-    .map(({ name, start: time, day, start_unix }) => ({
+    .map(({ name, slug, start: time, day, start_unix }) => ({
       name,
+      slug,
       time,
       day,
       start_unix
@@ -29,6 +30,12 @@ const getLocations = () => {
     { label: "Rathfarnam",  value: 'rathfarnham' },
     { label: "Clarendon",   value: 'clarendon-street' },
   ]
-}
+};
 
-export { mapClassData, filterByDay, filterEarlier, getCurrentDay, getLocations };
+export { 
+  mapClassData,
+  filterByDay,
+  filterEarlier,
+  getCurrentDay,
+  getLocations,
+};

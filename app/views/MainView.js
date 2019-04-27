@@ -30,7 +30,7 @@ class MainView extends Component<Props> {
     classSearch(location) { 
         GetClasses(location)
             .then(mapClassData)
-            .then(classes => filterByDay(classes, getCurrentDay()))
+            //.then(classes => filterByDay(classes, getCurrentDay()))
             .then(classes => this.setState({ classes, isLoading: false }));
     }
 

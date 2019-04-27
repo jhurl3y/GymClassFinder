@@ -2,7 +2,9 @@ import { StyleSheet } from 'react-native'
   
 const styles = StyleSheet.create({
     container: {
-        marginTop: 150,
+        marginTop: 120,
+        borderColor: '#eee',
+        borderTopWidth: 1
     },
     gymClass: {
       textAlign: 'center',
