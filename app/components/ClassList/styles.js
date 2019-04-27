@@ -7,25 +7,25 @@ const styles = StyleSheet.create({
         borderTopWidth: 1
     },
     gymClass: {
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 5,
+        textAlign: 'center',
+        color: '#333333',
+        marginBottom: 5,
     },
     listItemContainer: {
-      borderColor: '#eee',
-      borderBottomWidth: 1
+        borderColor: '#eee',
+        borderBottomWidth: 1
     },
     listItemWrapper: {
-      borderColor: '#eee'
+        borderColor: '#eee'
     },
     title: {
-      fontSize: 16
+        fontSize: 16
     },
     rightTitle: {
-      fontSize: 14
+        fontSize: 14
     },
     rightSubtitle: {
-      fontSize: 12
+        fontSize: 12
     }
 });
  

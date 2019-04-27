@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
-import { ListItem } from 'react-native-elements'
 import { styles } from './styles';
-import { getGymClassImage } from '../../lib/assets';
+import { GymListItem } from './ListItem';
+
 
 export class ClassList extends Component<Props> {
 
@@ -12,36 +12,11 @@ export class ClassList extends Component<Props> {
     
     renderListItem(item, index) {
         return (
-            <ListItem
-                key={index}
-                title={item.name}
-                subtitle={this.getSubtitle(item)}
-                rightTitle={this.getRightTitle(item)}
-                rightSubtitle={this.getRightSubtitle(item)}
-                containerStyle={styles.listItemContainer}
-                wrapperStyle={styles.listItemWrapper}
-                titleStyle={styles.title}
-                rightTitleStyle={styles.rightTitle}
-                rightSubtitleStyle={styles.rightSubtitle}
-                leftAvatar={{ source: this.getIcon(item) }}
+            <GymListItem
+                index={index}
+                item={item}
             />
         )
-    }
-
-    getIcon(item) {
-        return getGymClassImage(item.slug);
-    }
-
-    getSubtitle(item) {
-        return `${item.start}`;
-    }
-
-    getRightTitle(item) {
-        return `${item.duration} mins`;
-    }
-
-    getRightSubtitle(item) {
-        return `${item.area}`
     }
 
     render() {
