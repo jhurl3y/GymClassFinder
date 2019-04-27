@@ -35,6 +35,10 @@ const images = {
         yoga: require('../assets/images/classes/yoga.png'),
         zumba: require('../assets/images/classes/zumba.png'),
     },
+    logos: {
+        splashWhite: require('../assets/images/logo_white.png'),
+        splashColoured: require('../assets/images/logo_coloured.png'),
+    }
 };
 
 const getGymClassImage = (gymClass) => {
@@ -142,4 +146,8 @@ const getGymClassImage = (gymClass) => {
     return image;
 };
 
-export { getGymClassImage };
+const getSplashLogo = () => {
+    return images.logos.splashColoured;
+}
+
+export { getGymClassImage, getSplashLogo };

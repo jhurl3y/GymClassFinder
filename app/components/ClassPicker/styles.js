@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
         ...Platform.select({
             ios: {
                 alignItems: 'center',
+                marginTop: 20
             },
             android: {
                 alignItems: 'flex-end'
