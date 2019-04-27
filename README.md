@@ -12,3 +12,4 @@ OR
 
 react-native run-android
 ```
+![Alt text](docs/iphone.gif?raw=true "iPhone Emulator")
