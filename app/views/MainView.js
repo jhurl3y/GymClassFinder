@@ -10,14 +10,13 @@ import { mapClassData, filterByDay, getCurrentDay } from '../lib/helpers';
 type Props = {};
 class MainView extends Component<Props> {
     state = {
-        location: 'ballsbridge',
-        classes: [],
-        isLoading: true
+        location: this.props.location,
+        classes: this.props.classes,
+        isLoading: this.props.isLoading
     };
 
     constructor(props) {
         super(props);
-        this.classSearch(this.state.location)
     }
 
     classSearch(location) { 

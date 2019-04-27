@@ -4,6 +4,9 @@ import { getSplashLogo } from '../lib/assets';
 
 type Props = {};
 class SplashView extends Component<Props> {
+    state = {
+        isLoading: true
+    };
 
     constructor(props) {
         super(props);
