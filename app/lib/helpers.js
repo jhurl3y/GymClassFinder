@@ -1,11 +1,14 @@
 const mapClassData = classData => {
   return classData
-    .map(({ name, slug, start: time, day, start_unix }) => ({
+    .map(({ name, slug, start, end, day, area, start_unix, duration }) => ({
       name,
       slug,
-      time,
+      start,
+      end,
       day,
-      start_unix
+      area,
+      start_unix,
+      duration
     }))
 };
 
@@ -29,6 +32,11 @@ const getLocations = () => {
     { label: "Ballsbridge", value: 'ballsbridge' },
     { label: "Rathfarnam",  value: 'rathfarnham' },
     { label: "Clarendon",   value: 'clarendon-street' },
+    { label: "Ashbourne",   value: 'ashbourne' },
+    { label: "Cork",        value: 'cork' },
+    { label: "Drogheda",   value: 'drogheda' },
+    { label: "Naas",        value: 'naas' },
+    { label: "Swords",      value: 'swords' },
   ]
 };
 
