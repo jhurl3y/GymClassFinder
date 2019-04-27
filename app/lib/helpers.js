@@ -1,20 +1,20 @@
 const mapClassData = classData => {
   return classData
     .map(({ name, slug, start, end, day, area, start_unix, duration }) => ({
-      name,
-      slug,
-      start,
-      end,
-      day,
-      area,
-      start_unix,
-      duration
+        name,
+        slug,
+        start,
+        end,
+        day,
+        area,
+        start_unix,
+        duration
     }))
 };
 
 const filterByDay = (gymClasses, day) => {
     return gymClasses
-      .filter(gymClass => day === gymClass.day);
+        .filter(gymClass => day === gymClass.day);
 };
 
 const filterEarlier = gymClasses => {
