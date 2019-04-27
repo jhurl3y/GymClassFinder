@@ -1,9 +1,15 @@
-import { StyleSheet } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
   
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
-        paddingTop: 10
+        ...Platform.select({
+            ios: {
+                alignItems: 'center',
+            },
+            android: {
+                alignItems: 'flex-end'
+            },
+        }),
     },
     dimensions: {
         height: 100,

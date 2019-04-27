@@ -1,10 +1,17 @@
-import { StyleSheet } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
   
 const styles = StyleSheet.create({
     container: {
-        marginTop: 120,
         borderColor: '#eee',
-        borderTopWidth: 1
+        borderTopWidth: 1,
+        ...Platform.select({
+            ios: {
+                marginTop: 120,
+            },
+            android: {
+                marginTop: 0,
+            },
+        }),
     },
     gymClass: {
         textAlign: 'center',
@@ -29,4 +36,4 @@ const styles = StyleSheet.create({
     }
 });
  
-export { styles }
+export { styles };

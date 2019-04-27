@@ -7,6 +7,7 @@
  */
 
 import React, {Component} from 'react';
+import { StyleSheet, View } from 'react-native';
 import { Spinner } from '../components/Spinner';
 import { ClassList } from '../components/ClassList';
 import { ClassPicker } from '../components/ClassPicker';
@@ -30,7 +31,7 @@ class MainView extends Component<Props> {
     classSearch(location) { 
         GetClasses(location)
             .then(mapClassData)
-            //.then(classes => filterByDay(classes, getCurrentDay()))
+            .then(classes => filterByDay(classes, getCurrentDay()))
             .then(classes => this.setState({ classes, isLoading: false }));
     }
 
@@ -50,14 +51,23 @@ class MainView extends Component<Props> {
 
         return (
             <React.Fragment>
-                <ClassPicker
-                    location={this.state.location}
-                    classChange={(itemValue) => this.locationChanged(itemValue)}
-                />
-                {classList}
+                <View style={styles.container}>
+                    <ClassPicker
+                        location={this.state.location}
+                        classChange={(itemValue) => this.locationChanged(itemValue)}
+                    />
+                    {classList}
+                </View>
             </React.Fragment>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff'
+    },
+});
 
 export default MainView;
