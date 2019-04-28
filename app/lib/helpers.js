@@ -23,8 +23,17 @@ const filterEarlier = gymClasses => {
 };
 
 const getCurrentDay = () => {
-  const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-  return days[new Date().getDay() - 1];
+  const days = [
+    'sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday'
+  ];
+
+  return days[new Date().getDay()];
 };
 
 const getLocations = () => {
