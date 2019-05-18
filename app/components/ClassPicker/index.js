@@ -1,1 +1,0 @@
-export { ClassPicker } from './ClassPicker';

@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Spinner } from '../components/Spinner';
 import { ClassList } from '../components/ClassList';
-import { ClassPicker } from '../components/ClassPicker';
+import { LocationPicker } from '../components/LocationPicker';
+import { DayPicker } from '../components/DayPicker';
 import { GetClasses } from '../apis/gym';
 import { mapClassData, filterByDay, getCurrentDay } from '../lib/helpers';
 
@@ -12,6 +13,7 @@ class MainView extends Component<Props> {
     state = {
         location: this.props.location,
         classes: this.props.classes,
+        day: this.props.day,
         isLoading: this.props.isLoading
     };
 
@@ -19,16 +21,23 @@ class MainView extends Component<Props> {
         super(props);
     }
 
-    classSearch(location) { 
+    classSearch() {
+        const { location, day } = this.state;
+
         GetClasses(location)
             .then(mapClassData)
-            .then(classes => filterByDay(classes, getCurrentDay()))
+            .then(classes => filterByDay(classes, day))
             .then(classes => this.setState({ classes, isLoading: false }));
     }
 
     locationChanged(location) {
-        this.setState({ location: location, isLoading: true});
-        this.classSearch(location)
+        this.setState({ location, isLoading: true});
+        this.classSearch()
+    }
+
+    dayChanged(day) {
+        this.setState({ day, isLoading: true});
+        this.classSearch()
     }
 
     render() {
@@ -43,10 +52,16 @@ class MainView extends Component<Props> {
         return (
             <React.Fragment>
                 <View style={styles.container}>
-                    <ClassPicker
-                        location={this.state.location}
-                        classChange={(itemValue) => this.locationChanged(itemValue)}
-                    />
+                    <View style={styles.pickers}>
+                        <LocationPicker
+                            location={this.state.location}
+                            locationChange={(itemValue) => this.locationChanged(itemValue)}
+                        />
+                        <DayPicker
+                            day={this.state.day}
+                            dayChange={(itemValue) => this.dayChanged(itemValue)}
+                        />
+                    </View>
                     {classList}
                 </View>
             </React.Fragment>
@@ -57,7 +72,12 @@ class MainView extends Component<Props> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+    },
+    pickers: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
 });
 

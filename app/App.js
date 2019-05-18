@@ -9,29 +9,33 @@ export default class App extends Component<Props> {
     state = {
         location: 'ballsbridge',
         classes: [],
+        day: getCurrentDay(),
         isLoading: true
     };
 
     constructor(props) {
         super(props);
-        this.classSearch(this.state.location)
+        this.classSearch();
     }
 
-    classSearch(location) { 
+    classSearch() {
+        const { location, day } = this.state;
+
         GetClasses(location)
             .then(mapClassData)
-            .then(classes => filterByDay(classes, getCurrentDay()))
+            .then(classes => filterByDay(classes, day))
             .then(classes => this.setState({ classes, isLoading: false }));
     }
 
     render() {
-        const { classes, isLoading, location } = this.state;
+        const { classes, isLoading, location, day } = this.state;
 
         if (!isLoading) {
             return (
                 <MainView
                     location={location}
                     classes={classes}
+                    day={day}
                     isLoading={isLoading}
                 />
             )
