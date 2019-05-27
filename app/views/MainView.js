@@ -4,8 +4,6 @@ import { Spinner } from '../components/Spinner';
 import { ClassList } from '../components/ClassList';
 import { LocationPicker } from '../components/LocationPicker';
 import { DayPicker } from '../components/DayPicker';
-import { GetClasses } from '../apis/gym';
-import { mapClassData, filterByDay, getCurrentDay } from '../lib/helpers';
 
 
 type Props = {};
@@ -21,30 +19,27 @@ class MainView extends Component<Props> {
         super(props);
     }
 
-    classSearch() {
-        const { location, day } = this.state;
+    filterClasses() {
+        const { classes, location, day } = this.state;
 
-        GetClasses(location)
-            .then(mapClassData)
-            .then(classes => filterByDay(classes, day))
-            .then(classes => this.setState({ classes, isLoading: false }));
+        return classes
+            .filter(gymClass => day === gymClass.day)
+            .filter(gymClass => location === gymClass.location);
     }
 
     locationChanged(location) {
-        this.setState({ location, isLoading: true});
-        this.classSearch()
+        this.setState({ location });
     }
 
     dayChanged(day) {
-        this.setState({ day, isLoading: true});
-        this.classSearch()
+        this.setState({ day });
     }
 
     render() {
-        const { classes, isLoading } = this.state;
+        const { isLoading } = this.state;
 
         if (!isLoading) {
-            classList = <ClassList classes={classes}/>
+            classList = <ClassList classes={this.filterClasses()}/>
         } else {
             classList = <Spinner />
         }

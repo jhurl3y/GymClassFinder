@@ -1,6 +1,6 @@
 const mapClassData = classData => {
   return classData
-    .map(({ name, slug, start, end, day, area, start_unix, duration }) => ({
+    .map(({ name, slug, start, end, day, area, start_unix, duration, location }) => ({
         name,
         slug,
         start,
@@ -8,13 +8,19 @@ const mapClassData = classData => {
         day,
         area,
         start_unix,
-        duration
+        duration,
+        location
     }))
 };
 
 const filterByDay = (gymClasses, day) => {
     return gymClasses
         .filter(gymClass => day === gymClass.day);
+};
+
+const filterByLocation = (gymClasses, location) => {
+  return gymClasses
+      .filter(gymClass => location === gymClass.location);
 };
 
 const filterEarlier = gymClasses => {
@@ -51,19 +57,20 @@ const getLocations = () => {
 
 const getDays = () => {
   return [
-    { label: "Sunday",    value: 'sunday' },
     { label: "Monday",   value: 'monday' },
     { label: "Tuesday",   value: 'tuesday' },
     { label: "Wednesday", value: 'wednesday' },
     { label: "Thursday",  value: 'thursday' },
     { label: "Friday",    value: 'friday' },
-    { label: "Saturday",  value: 'saturday' }
+    { label: "Saturday",  value: 'saturday' },
+    { label: "Sunday",    value: 'sunday' },
   ]
 };
 
 export { 
   mapClassData,
   filterByDay,
+  filterByLocation,
   filterEarlier,
   getCurrentDay,
   getLocations,

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import MainView from './views/MainView';
 import SplashView from './views/SplashView';
 import { GetClasses } from './apis/gym';
-import { mapClassData, filterByDay, getCurrentDay } from './lib/helpers';
+import { mapClassData, filterByDay, filterByLocation, getCurrentDay } from './lib/helpers';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -19,11 +19,8 @@ export default class App extends Component<Props> {
     }
 
     classSearch() {
-        const { location, day } = this.state;
-
-        GetClasses(location)
+        GetClasses({})
             .then(mapClassData)
-            .then(classes => filterByDay(classes, day))
             .then(classes => this.setState({ classes, isLoading: false }));
     }
 
