@@ -1,29 +1,30 @@
-import React, { Component } from 'react';
-import { View, Picker } from 'react-native';
-import { getDays } from '../../lib/helpers';
-import { styles } from './styles';
+import React, { Component } from "react";
+import { View, Picker } from "react-native";
+import { getDays } from "../../lib/helpers";
+import { styles } from "./styles";
 
-export class DayPicker extends Component<Props> {
+export class DayPicker extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-    constructor(props) {
-        super(props);
-    }
+  render() {
+    const days = getDays();
 
-    render() {
-        const days = getDays();
-
-        return (
-            <View style={styles.container}>
-                <Picker
-                    selectedValue={this.props.day}
-                    style={styles.dimensions}
-                    onValueChange={this.props.dayChange}
-                >
-                    {days.map((day, index) => {
-                        return (<Picker.Item label={day.label} value={day.value} key={index}/>)
-                    })}
-                </Picker>
-            </View>
-        )
-    }
+    return (
+      <View style={styles.container}>
+        <Picker
+          selectedValue={this.props.day}
+          style={styles.dimensions}
+          onValueChange={this.props.dayChange}
+        >
+          {days.map((day, index) => {
+            return (
+              <Picker.Item label={day.label} value={day.value} key={index} />
+            );
+          })}
+        </Picker>
+      </View>
+    );
+  }
 }

@@ -1,13 +1,13 @@
-import { Platform, StyleSheet } from 'react-native'
+import { Platform, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    container: {
-        marginTop: 10
-    },
-    dimensions: {
-        height: 100,
-        width: 150
-    }
+  container: {
+    marginTop: 10
+  },
+  dimensions: {
+    height: 100,
+    width: 150
+  }
 });
 
-export { styles }
+export { styles };
