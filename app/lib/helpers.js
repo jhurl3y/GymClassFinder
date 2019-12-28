@@ -24,8 +24,6 @@ const mapClassData = classData => {
   );
 };
 
-// location null!
-
 const filterByDay = (gymClasses, day) => {
   return gymClasses.filter(gymClass => day === gymClass.day);
 };

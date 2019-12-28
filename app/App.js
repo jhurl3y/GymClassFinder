@@ -27,7 +27,7 @@ export default class App extends Component {
     if (!isLoading) {
       return <MainView location={location} classes={classes} />;
     } else {
-      return <SplashView> </SplashView>;
+      return <SplashView />;
     }
   }
 }
