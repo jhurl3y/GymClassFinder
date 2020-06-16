@@ -19,7 +19,7 @@
     "acorn": ">=5.7.4",
     "babel-jest": "^25.1.0",
     "jest": "^25.1.0",
-    "js-yaml": "^3.13.1",
+    "js-yaml": "^3.14.0",
     "lodash": "^4.7.15",
     "mem": "^4.0.0",
     "metro-react-native-babel-preset": "^0.53.1",
