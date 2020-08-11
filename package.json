@@ -22,7 +22,7 @@
     "js-yaml": "^3.14.0",
     "lodash": "^4.7.15",
     "mem": "^6.1.0",
-    "metro-react-native-babel-preset": "^0.59.0",
+    "metro-react-native-babel-preset": "^0.62.0",
     "minimist": ">=1.2.2",
     "mixin-deep": "^2.0.1",
     "react-test-renderer": "16.13.0"
