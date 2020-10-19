@@ -17,7 +17,7 @@
     "@babel/core": "^7.10.2",
     "@babel/runtime": "^7.10.3",
     "acorn": ">=7.3.1",
-    "babel-jest": "^26.1.0",
+    "babel-jest": "^26.6.0",
     "jest": "^26.1.0",
     "js-yaml": "^3.14.0",
     "lodash": "^4.7.15",
