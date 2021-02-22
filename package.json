@@ -20,7 +20,7 @@
     "babel-jest": "^26.1.0",
     "jest": "^26.1.0",
     "js-yaml": "^3.14.0",
-    "lodash": "^4.7.15",
+    "lodash": "^4.17.21",
     "mem": "^6.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
     "minimist": ">=1.2.2",
